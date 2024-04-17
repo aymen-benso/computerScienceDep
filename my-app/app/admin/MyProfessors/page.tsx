@@ -1,68 +1,55 @@
-import { Box, Flex, Avatar, Heading, Text, IconButton, Button, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { BiLike, BiChat, BiShare } from 'react-icons/bi';
 
-interface Professor {
-    name: string;
-    profession: string;
+export default function MyProfessors() {
+    const professors = [
+        {
+            id: 1,
+            name: "John Doe",
+            email: "johndoe@example.com",
+            avatar: "../use2.jpg",
+            bio: "Professor of Computer Science",
+            field: "CS"
+        },
+        {
+            id: 2,
+            name: "Jane Smith",
+            email: "janesmith@example.com",
+            avatar: "../use3.jpeg",
+            bio: "Assistant Professor of Computer Science",
+            field: "CS"
+        },
+        {
+            id: 3,
+            name: "Michael Johnson",
+            email: "michaeljohnson@example.com",
+            avatar: "../use1.jpg",
+            bio: "Associate Professor of Computer Science",
+            field: "CS"
+        }
+    ];
+  return (
+    <div className="flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-bold p-5">My Professors</h1>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {professors.map((professor) => (
+            <div key={professor.id} className="bg-white shadow-md p-4">
+                <img src={professor.avatar} alt={professor.name} className="w-24 h-24 rounded-full mx-auto" />
+                <h2 className="text-xl font-bold text-center">{professor.name}</h2>
+                <p className="text-center">{professor.email}</p>
+                <p className="text-center">{professor.bio}</p>
+                <p className="text-center">{professor.field}</p>
+                <div className="flex justify-center gap-4">
+                <BiLike />
+                <BiChat />
+                <BiShare />
+                <BsThreeDotsVertical />
+                </div>
+            </div>
+            ))}
+        </div>
+    </div>
+  );
 }
 
-interface ProfessorCardProps {
-    professors: Professor[];
-}
 
-const ProfessorCard: React.FC<ProfessorCardProps> = ({ professors = [] }) => (
-  // rest of your code
-    <>
-        {professors.map((professor) => (
-            <Card maxW='md' key={professor.name}>
-                <CardHeader>
-                    <Flex >
-                        <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                            <Avatar name={professor.name} src='https://bit.ly/sage-adebayo' />
-
-                            <Box>
-                                <Heading size='sm'>{professor.name}</Heading>
-                                <Text>{professor.profession}</Text>
-                            </Box>
-                        </Flex>
-                        <IconButton
-                            variant='ghost'
-                            colorScheme='gray'
-                            aria-label='See menu'
-                            icon={<BsThreeDotsVertical />}
-                        />
-                    </Flex>
-                </CardHeader>
-                <CardBody>
-                    <Text>
-                        {professor.name} is a {professor.profession} at our university.
-                    </Text>
-                </CardBody>
-                <CardFooter
-                    justify='space-between'
-                    flexWrap='wrap'
-                    sx={{
-                        '& > button': {
-                            minW: '136px',
-                        },
-                    }}
-                >
-                    <Button flex='1' variant='ghost' leftIcon={<BiLike />}>
-                        Like
-                    </Button>
-                    <Button flex='1' variant='ghost' leftIcon={<BiChat />}>
-                        Comment
-                    </Button>
-                    <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
-                        Share
-                    </Button>
-                </CardFooter>
-            </Card>
-        ))}
-    </>
-);
-
-
-
-export default ProfessorCard;
