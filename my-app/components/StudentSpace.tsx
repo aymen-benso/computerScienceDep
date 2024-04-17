@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Link from "next/link"
 
 
 export default function StudentSpace({ btname, fixed } : { btname: string, fixed: string }) {
@@ -76,16 +77,28 @@ export default function StudentSpace({ btname, fixed } : { btname: string, fixed
 
 function ProfileForm({ className }: React.ComponentProps<"form">) {
   return (
+    <>
     <form className={cn("grid items-start gap-4", className)}>
       <div className="grid gap-2">
         <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" defaultValue="shadcn@example.com" />
+        <Input type="email" id="email" defaultValue="Student ID" />
       </div>
       <div className="grid gap-2">
         <Label htmlFor="username">Username</Label>
-        <Input id="username" defaultValue="@shadcn" />
+        <Input id="username" defaultValue="Birth Date" />
       </div>
-      <Button type="submit">Login</Button>
-    </form>
+</form>
+      <Link
+                href="/admin"
+                className="text-muted-foreground hover:text-foreground"
+              >      
+      <Button>
+
+                Login
+              
+        
+        </Button>
+        </Link>
+    </>
   )
 }
