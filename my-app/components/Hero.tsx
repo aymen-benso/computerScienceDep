@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { ImagesSlider } from "./ui/images-slider";
-
+import StudentSpace from "./StudentSpace";
 
 export default function Hero() {
   const images = [
@@ -31,7 +31,7 @@ export default function Hero() {
         <motion.p className="font-bold text-xl md:text-5xl text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-3">
           Welcome to <br /> Tlemcen University
         </motion.p>
-        <StudentSpace btname="Student Space" />
+        <StudentSpace btname="Student Space" fixed="fixed" />
       </motion.div>
     </ImagesSlider>
   );
